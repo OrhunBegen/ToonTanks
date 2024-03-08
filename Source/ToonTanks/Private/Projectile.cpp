@@ -3,6 +3,8 @@
 
 #include "Projectile.h"
 
+
+
 // Sets default values
 AProjectile::AProjectile()
 {
@@ -12,6 +14,10 @@ AProjectile::AProjectile()
 
 	RootComponent = ProjectileMesh;
 
+	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
+
+	ProjectileMovementComponent->InitialSpeed = 200.f;
+	ProjectileMovementComponent->MaxSpeed = 200.f;
 	
 }
 

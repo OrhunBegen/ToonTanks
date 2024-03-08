@@ -24,20 +24,20 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComponent;
-
+	
 	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BaseMesh;
-
+	
 	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
 	
 	UPROPERTY(VisibleAnywhere, Category = "TankBody")
 	USceneComponent* ProjectileSpawnPoint;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite,Category = "Tech", meta = (AllowPrivateAccess = "true"))
-	int32 INTAnywhere = 400.f;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	
+	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite,Category = "Tech", meta = (AllowPrivateAccess = "true"))
+	// int32 INTAnywhere = 400.f;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Combats")
 	TSubclassOf<class AProjectile> ProjectileClass;
 	
 

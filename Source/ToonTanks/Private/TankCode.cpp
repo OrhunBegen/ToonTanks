@@ -9,8 +9,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 
-
-
 ATankCode::ATankCode()
 {
 	ArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ArmComponent"));
@@ -35,7 +33,6 @@ void ATankCode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	Fire();
 	
 	if(PlayerControllerRef)
 	{
@@ -52,7 +49,7 @@ void ATankCode::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent-> BindAxis(TEXT("MoveForward"), this, &ATankCode::Move);
 	PlayerInputComponent-> BindAxis(TEXT("Turn"), this, &ATankCode::Turn);
 	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed,this, &ATankCode::Fire);
-	
+
 	
 }
 void ATankCode::Move (float Value)
@@ -71,3 +68,4 @@ void ATankCode::Turn (float Value)
 	DeltaRotation.Yaw = Value* TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalRotation(DeltaRotation,true);
 }
+

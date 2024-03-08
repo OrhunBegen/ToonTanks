@@ -7,9 +7,7 @@
 #include "TankCode.generated.h"
 
 
-/**
- * 
- */
+
 UCLASS()
 class TOONTANKS_API ATankCode : public ABasePawn
 {
@@ -27,6 +25,8 @@ class TOONTANKS_API ATankCode : public ABasePawn
 
 	UPROPERTY(EditInstanceOnly, Category = "TanksBody")
 	float TurnRate = 100.f;
+
+
 
 	protected:
 	// Called when the game starts or when spawned
