@@ -43,6 +43,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	UE_LOG(LogTemp, Warning, TEXT("Hit Component: %s"), *HitComp->GetName()
 	UE_LOG(LogTemp, Warning, TEXT("Hit Actor: %s"), *OtherActor->GetActorNameOrLabel()	);
 	UE_LOG(LogTemp, Warning, TEXT("Hit Component: %s"), *OtherComp->GetName()	);
+	//changes for gitlab
 
 	
 
