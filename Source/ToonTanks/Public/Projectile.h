@@ -20,6 +20,12 @@ public:
 private:
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ProjectileMesh;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
+	 
+
+
 	
 protected:
 	// Called when the game starts or when spawned
