@@ -7,6 +7,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
+
 UCLASS()
 class TOONTANKS_API AProjectile : public AActor
 {
@@ -23,7 +24,8 @@ private:
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
-	 
+
+	float Damage = 50.f;
 
 
 	
