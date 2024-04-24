@@ -36,6 +36,9 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UHealthComponent::DamageTaken(AActor* DamageActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	
+	if(Damage<0){ return;}
+	Health -= Damage;
+	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health); 
+	UE_LOG(LogTemp, Warning, TEXT("damaged actor: %s"), *DamageActor->GetName());
 }
 
