@@ -43,6 +43,7 @@ void ATankCode::Tick(float DeltaTime)
 		DrawDebugSphere(GetWorld(),HitResult.ImpactPoint,10.f , 12, FColor::Red,false, 0.1f);
 	}
 }
+
 void ATankCode::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) 
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);

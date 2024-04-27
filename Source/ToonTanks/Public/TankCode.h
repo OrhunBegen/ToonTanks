@@ -21,12 +21,10 @@ class TOONTANKS_API ATankCode : public ABasePawn
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	UPROPERTY(EditInstanceOnly, Category = "TanksBody")
-	float Speed = 100.f;
+	float Speed = 700.f;
 
 	UPROPERTY(EditInstanceOnly, Category = "TanksBody")
 	float TurnRate = 100.f;
-
-
 
 	protected:
 	// Called when the game starts or when spawned
