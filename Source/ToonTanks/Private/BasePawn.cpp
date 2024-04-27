@@ -10,22 +10,23 @@
 // Sets default values
 ABasePawn::ABasePawn()
 {
-	
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(("Capsule Collider"));
 	RootComponent = CapsuleComponent;
-
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
 	BaseMesh-> SetupAttachment(CapsuleComponent);
-
 	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
 	TurretMesh-> SetupAttachment(BaseMesh);
-
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
-
 	ProjectileSpawnPoint -> SetupAttachment(TurretMesh);
 	
 }
 
+void ABasePawn::HandleDestruction(){
+
+	//Visual/sound Effects
+	
+
+}
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {

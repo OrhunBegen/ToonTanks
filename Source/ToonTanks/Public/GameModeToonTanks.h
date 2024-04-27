@@ -14,7 +14,13 @@ class TOONTANKS_API AGameModeToonTanks : public AGameModeBase
 {
 	GENERATED_BODY()
 
+
+public:
 	UFUNCTION(BlueprintCallable)
-	void ActorDied();
+	void ActorDied(AActor* DeadActor);
+protected:
+	virtual void BeginPlay() override;
 	
+private:
+	class ATankCode* Tank; 
 };

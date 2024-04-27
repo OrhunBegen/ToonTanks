@@ -20,6 +20,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category= "Tech")
 	float FireRange = 500.f;
 
+
+	void HandleDestruction();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
