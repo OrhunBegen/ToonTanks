@@ -39,6 +39,12 @@ private:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Combats")
 	TSubclassOf<class AProjectile> ProjectileClass;
+
+	UFUNCTION(BlueprintCallable)
+	void HandleDestruction();
+
+	
+
 	
 
 public:

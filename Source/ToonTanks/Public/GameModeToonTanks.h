@@ -13,5 +13,8 @@ UCLASS()
 class TOONTANKS_API AGameModeToonTanks : public AGameModeBase
 {
 	GENERATED_BODY()
+
+	UFUNCTION(BlueprintCallable)
+	void ActorDied();
 	
 };
