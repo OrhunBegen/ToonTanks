@@ -26,8 +26,8 @@ class TOONTANKS_API ATankCode : public ABasePawn
 	UPROPERTY(EditInstanceOnly, Category = "TanksBody")
 	float TurnRate = 100.f;
 
-	UFUNCTION(BlueprintCallable)
-	void HandleDestruction();
+	
+	
 	
 	protected:
 	// Called when the game starts or when spawned
@@ -38,6 +38,8 @@ class TOONTANKS_API ATankCode : public ABasePawn
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void HandleDestruction();
+	
 	APlayerController* GetTankPlayerController() const { return TankPlayerController; }
 
 	private:

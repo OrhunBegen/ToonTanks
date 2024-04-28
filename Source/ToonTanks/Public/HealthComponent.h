@@ -2,10 +2,13 @@
 
 #pragma once
 
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "GameModeToonTanks.h"
 #include "HealthComponent.generated.h"
+
+
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TOONTANKS_API UHealthComponent : public UActorComponent
@@ -27,11 +30,13 @@ private:
 	UPROPERTY()
 	float Health = 0.f;
 
+	class AGameModeToonTanks* GameModeToonTanks;
+	
 public:
-	UFUNCTION()
+	
 	void DamageTaken(AActor* DamageActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
-	class AGameModeToonTanks* GameModeToonTanks;
+	
 	
 	
 public:	

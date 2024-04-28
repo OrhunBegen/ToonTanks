@@ -2,6 +2,8 @@
 
 #pragma once
 
+
+#include "GameModeToonTanks.h"
 #include "CoreMinimal.h"
 #include "BasePawn.h"
 #include "Turret.generated.h"

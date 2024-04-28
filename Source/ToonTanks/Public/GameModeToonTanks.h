@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "HealthComponent.h"
 #include "GameModeToonTanks.generated.h"
+
+
 
 /**
  * 

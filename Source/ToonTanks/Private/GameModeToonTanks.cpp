@@ -3,7 +3,6 @@
 
 #include "GameModeToonTanks.h"
 
-#include "HealthComponent.h"
 #include "TankCode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Turret.h"
@@ -32,11 +31,7 @@ void AGameModeToonTanks::ActorDied(AActor* DeadActor)
 void AGameModeToonTanks::BeginPlay()
 {
 	Super::BeginPlay();
-	//Tank = UGamePlayStatics::GetPlayerPawn(this, 0);
+	
 	Tank = Cast <ATankCode>(UGameplayStatics::GetPlayerPawn(this, 0));
-
-	GetOwner()-> OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
-	
-	
 	
 }
