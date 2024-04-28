@@ -14,13 +14,13 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
-	
-	
-	void HandleDestruction();
+
+
+	virtual void HandleDestruction();
 	
 protected:
 
-	void RotateTurret(FVector LookAtTarget);
+	void RotateTurret(const FVector& LookAtTarget) const;
 	void Fire();
 
 private:

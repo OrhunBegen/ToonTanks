@@ -7,12 +7,11 @@
 #include "GameModeToonTanks.h"
 
 // Sets default values for this component's properties
-UHealthComponent::UHealthComponent()
+UHealthComponent::UHealthComponent(): GameModeToonTanks(nullptr)
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-	
 }
 
 
@@ -37,14 +36,14 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 }
 
 
-void UHealthComponent::DamageTaken(AActor* DamageActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
+void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
 	if(Damage<0){ return;}
 	Health -= Damage;
 
 	if(Health<= 0 && GameModeToonTanks)
 	{
-		GameModeToonTanks->ActorDied(DamageActor);
+		GameModeToonTanks->ActorDied(DamagedActor);
 	}
 
 

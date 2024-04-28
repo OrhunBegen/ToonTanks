@@ -24,6 +24,6 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
-private:
+public:
 	class ATankCode* Tank; 
 };

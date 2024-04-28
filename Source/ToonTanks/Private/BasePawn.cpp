@@ -28,11 +28,11 @@ void ABasePawn::HandleDestruction(){
 
 }
 
-void ABasePawn::RotateTurret(FVector LookAtTarget)
+void ABasePawn::RotateTurret(const FVector& LookAtTarget) const
 {
-	FVector ToTarget = LookAtTarget - TurretMesh-> GetComponentLocation();
+	FVector const ToTarget = LookAtTarget - TurretMesh-> GetComponentLocation();
 
-	FRotator LookAtRotation =FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
+	const FRotator LookAtRotation =FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
 
     	//TurretMesh -> SetWorldRotation(LookAtRotation);
 

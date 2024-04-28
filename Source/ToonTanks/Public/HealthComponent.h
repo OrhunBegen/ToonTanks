@@ -27,14 +27,18 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.f;
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	float Health = 0.f;
-
+	
+	/**
+	 * 
+	 */
 	class AGameModeToonTanks* GameModeToonTanks;
 	
 public:
-	
-	void DamageTaken(AActor* DamageActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
+
+	UFUNCTION()
+	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
 	
 	
