@@ -4,6 +4,7 @@
 #include "GameModeToonTanks.h"
 
 #include "TankCode.h"
+#include "TanksPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Turret.h"
 
@@ -13,11 +14,9 @@ void AGameModeToonTanks::ActorDied(AActor* DeadActor)
 	if (DeadActor == Tank)
 	{
 		Tank -> HandleDestruction();
-		if ( Tank -> GetTankPlayerController())
+		if (TanksPlayerController)
 		{
-			Tank -> DisableInput(Tank -> GetTankPlayerController());
-			Tank -> GetTankPlayerController() -> bShowMouseCursor = false;
-			
+			TanksPlayerController -> SetPlayerEnabledState(false);
 		}
 	
 	}
@@ -33,5 +32,7 @@ void AGameModeToonTanks::BeginPlay()
 	Super::BeginPlay();
 	
 	Tank = Cast <ATankCode>(UGameplayStatics::GetPlayerPawn(this, 0));
+
+	TanksPlayerController = Cast<ATanksPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
 	
 }
