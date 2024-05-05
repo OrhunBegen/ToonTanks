@@ -24,8 +24,14 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
-public:
+private:
 	class ATankCode* Tank;
 
 	class ATanksPlayerController* TanksPlayerController;
+
+	float StartDelay = 3.f;
+
+	void HandleGameStart();
+
+
 };
