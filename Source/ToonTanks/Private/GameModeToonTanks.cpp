@@ -42,7 +42,11 @@ void AGameModeToonTanks::HandleGameStart()
 	if(TanksPlayerController)
 	{
 		TanksPlayerController -> SetPlayerEnabledState(false);
+
 		FTimerHandle PlayerEnableTimerHandle;
+		FTimerDelegate PlayerEnableTimerDelegate = FTimerDelegate::CreateUObject(TanksPlayerController,&ATanksPlayerController::SetPlayerEnabledState,true );
+
+		GetWorldTimerManager().SetTimer(PlayerEnableTimerHandle, PlayerEnableTimerDelegate, StartDelay, false);
 		
 	}
 	
