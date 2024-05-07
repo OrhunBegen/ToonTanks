@@ -12,6 +12,7 @@ UCLASS()
 class TOONTANKS_API AProjectile : public AActor
 {
 	GENERATED_BODY()
+
 	
 public:	
 	// Sets default values for this actor's properties
@@ -26,7 +27,11 @@ private:
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit);
 	float Damage = 50.f;
 
+	UPROPERTY(EditAnywhere , Category = "Combat")
+	class UParticleSystem* HitParticle;
 
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UParticleSystemComponent* TrailParticles;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -38,5 +43,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UProjectileMovementComponent* ProjectileMovementComponent;
+
+	
 
 };

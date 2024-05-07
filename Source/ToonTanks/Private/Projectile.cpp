@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/DamageType.h"
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -20,6 +20,10 @@ AProjectile::AProjectile()
 
 	ProjectileMovementComponent->InitialSpeed = 200.f;
 	ProjectileMovementComponent->MaxSpeed = 200.f;
+
+	TrailParticles =	CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
+
+	TrailParticles ->SetupAttachment(RootComponent);
 	
 }
 
@@ -38,20 +42,31 @@ void AProjectile::Tick(float DeltaTime)
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit)
 {
 	AActor* MyOwner = GetOwner();
-	if(MyOwner == nullptr) return;
+	if(MyOwner == nullptr)
+	{
+		Destroy();
+		return;
+		
+	}
 	APawn* MyOwnerInstigator = MyOwner->GetInstigator();
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 	if( OtherActor && OtherActor != this && OtherActor != MyOwner && MyOwnerInstigator != OtherActor)
 	{
 		UGameplayStatics::ApplyDamage( OtherActor, Damage, MyOwnerInstigator->GetController(), this, DamageTypeClass);	
-		Destroy();
-		UE_LOG(LogTemp, Warning, TEXT("Projectile Hit %s"), *OtherActor->GetName());
+
+		if(HitParticle)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation(), GetActorRotation());	
+		}
+		
+		
+		//UE_LOG(LogTemp, Warning, TEXT("Projectile Hit %s"), *OtherActor->GetName());
 	}
 	else if(OtherActor == MyOwner)
 	{
 		Destroy();
 	}
-
+	Destroy();
 
 	
 }
