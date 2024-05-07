@@ -17,14 +17,18 @@ void AGameModeToonTanks::ActorDied(AActor* DeadActor)
 		{
 			TanksPlayerController -> SetPlayerEnabledState(false);
 		}
+		GameOver(false); // Player Died
 		
 	}
 	else if (ATurret* DestroyedTurret = Cast<ATurret>(DeadActor))
 	{
 		DestroyedTurret -> HandleDestruction();
+		--TargetTurrets;
+		if (TargetTurrets == 0)
+		{
+			GameOver(true); // Player Won
+		}
 	}
-	
-	
 }
 void AGameModeToonTanks::BeginPlay()
 {
@@ -36,8 +40,12 @@ void AGameModeToonTanks::BeginPlay()
 
 void AGameModeToonTanks::HandleGameStart()
 {
+	TargetTurrets = GetTargetTurretsCount();
 	Tank = Cast <ATankCode>(UGameplayStatics::GetPlayerPawn(this, 0));
 	TanksPlayerController = Cast<ATanksPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
+
+	StartGame();
+	
 	
 	if(TanksPlayerController)
 	{
@@ -50,10 +58,10 @@ void AGameModeToonTanks::HandleGameStart()
 		
 	}
 	
-	
-
-
-	
-
-
+}
+int32 AGameModeToonTanks::GetTargetTurretsCount()
+{
+	TArray<AActor*> TurretActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATurret::StaticClass(), TurretActors);
+	return TurretActors.Num();
 }
