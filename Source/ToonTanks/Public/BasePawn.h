@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
 {
@@ -46,7 +48,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* DeathEffect;
 	
-
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* DeathSound;
 	
 
 	

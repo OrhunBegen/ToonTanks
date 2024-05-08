@@ -32,7 +32,16 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+
+	if(LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+	}
+
 }
+
+
+
 
 // Called every frame
 void AProjectile::Tick(float DeltaTime)
@@ -41,6 +50,7 @@ void AProjectile::Tick(float DeltaTime)
 }
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,FVector NormalImpulse, const FHitResult& Hit)
 {
+	UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
 	AActor* MyOwner = GetOwner();
 	if(MyOwner == nullptr)
 	{
@@ -67,7 +77,5 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 		Destroy();
 	}
 	Destroy();
-
-	
 }
   
