@@ -24,6 +24,12 @@ ABasePawn::ABasePawn()
 void ABasePawn::HandleDestruction(){
 
 	//Visual/sound Effects
+
+	if(DeathEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, DeathEffect, GetActorLocation(), GetActorRotation());
+	}
+	
 	
 
 }
