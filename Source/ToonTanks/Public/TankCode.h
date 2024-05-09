@@ -27,6 +27,7 @@ class TOONTANKS_API ATankCode : public ABasePawn
 	float TurnRate = 100.f;
 
 	
+	bool bTankAlive = true;
 	
 	
 	protected:

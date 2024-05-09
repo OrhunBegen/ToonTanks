@@ -76,5 +76,6 @@ void ATankCode::HandleDestruction()
 	
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
+	bTankAlive = false;
 	
 }

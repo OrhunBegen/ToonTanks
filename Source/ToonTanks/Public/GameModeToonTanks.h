@@ -42,6 +42,6 @@ private:
 
 	int32 TargetTurrets = 0;
 	int32 GetTargetTurretsCount();
-
+	
 
 };

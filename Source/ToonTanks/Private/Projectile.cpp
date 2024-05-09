@@ -68,6 +68,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation(), GetActorRotation());	
 		}
+		if(HitCameraShakeClass)
+		{
+			GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(HitCameraShakeClass);
+		}
 		
 		
 		//UE_LOG(LogTemp, Warning, TEXT("Projectile Hit %s"), *OtherActor->GetName());

@@ -59,10 +59,15 @@ void ATurret::HandleDestruction()
 
 void ATurret::CheckFireCondition()
 {
-	if(InFireRange())
+	if(Tank == nullptr)
+	{
+		return;
+	}
+	if(InFireRange() && Tank->bTankAlive)
 	{
 		Fire();
 	}
+	
 }
 bool ATurret::InFireRange()
 {
